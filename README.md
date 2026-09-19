@@ -37,6 +37,10 @@ frontend/
 
 ## 快速开始
 
+**Windows 一键启动**：双击根目录下的 `start.bat`（首次运行会自动创建虚拟环境并安装依赖，然后自动打开浏览器）。
+
+或手动启动：
+
 ```bash
 cd backend
 python -m venv .venv
