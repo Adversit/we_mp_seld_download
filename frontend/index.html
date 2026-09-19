@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微信公众号文章备份</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="card">
+  <h1>微信公众号文章备份</h1>
+  <div class="subtitle">只使用微信官方 API，AppSecret 仅发送给你本机运行的后端，不会保存到浏览器或上传到第三方。</div>
+
+  <div id="connect-form">
+    <div class="field">
+      <label>AppID</label>
+      <input id="app-id" placeholder="wx1234567890abcdef" autocomplete="off">
+      <div class="hint">
+        登录微信公众平台 → 设置与开发 → 基本配置
+        <a class="link-btn" href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">去微信公众平台获取 ↗</a>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>AppSecret</label>
+      <input id="app-secret" type="password" placeholder="与 AppID 位于同一页面" autocomplete="off">
+      <div class="hint">
+        需管理员验证后查看/重置
+        <a class="link-btn" href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">去微信公众平台获取 ↗</a>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>服务器出口 IP（如接口提示 IP 未授权，需加入白名单）</label>
+      <div class="ip-row">
+        <span id="server-ip">检测中…</span>
+        <button id="copy-ip">复制</button>
+      </div>
+      <div class="hint">
+        微信公众平台 → 设置与开发 → 基本配置 → IP 白名单
+        <a class="link-btn" href="https://mp.weixin.qq.com/" target="_blank" rel="noopener">去配置 IP 白名单 ↗</a>
+      </div>
+    </div>
+
+    <button class="primary" id="verify-btn">测试连接</button>
+  </div>
+
+  <div id="status"></div>
+
+  <div class="connected-panel" id="connected-panel">
+    <div class="account-row"><span>AppID</span><span id="c-app-id"></span></div>
+    <div class="account-row"><span>接口权限</span><span>✓ 已发布内容接口可用</span></div>
+    <div class="account-row"><span>历史文章</span><span id="c-total"></span></div>
+
+    <div class="checks" id="format-checks">
+      <label><input type="checkbox" value="markdown" checked> Markdown</label>
+      <label><input type="checkbox" value="html" checked> HTML</label>
+      <label><input type="checkbox" value="json" checked> JSON</label>
+      <label><input type="checkbox" id="with-images" checked> 下载正文图片</label>
+    </div>
+
+    <button class="primary" id="export-btn">一键下载全部文章</button>
+
+    <div class="doc-links">
+      官方接口说明：
+      <a href="https://developers.weixin.qq.com/doc/subscription/api/public/api_freepublish_batchget.html" target="_blank" rel="noopener">获取成功发布列表 ↗</a>
+      <a href="https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/getStableAccessToken.html" target="_blank" rel="noopener">Stable Access Token ↗</a>
+      <a href="https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html" target="_blank" rel="noopener">Access Token ↗</a>
+      <a href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html" target="_blank" rel="noopener">公众号开发文档 ↗</a>
+    </div>
+
+    <div class="reset-link" id="reset-link">重新连接其他公众号</div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
